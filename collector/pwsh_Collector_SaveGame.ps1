@@ -1,6 +1,6 @@
 # --- CONFIGURATION ---
-$RepoDir = "C:\SatisfactoryBlueprintsRepo"
-$SatisfactoryBaseDir = "$env:LOCALAPPDATA\FactoryGame\Saved\SaveGames\<Deine_Steam_Oder_Epic_ID>\Blueprints"
+$RepoDir = split-path $PSScriptRoot
+$SatisfactoryBaseDir = "$env:LOCALAPPDATA\FactoryGame\Saved\SaveGames\blueprints"
 
 # 1. UPDATE VOM REPO HOLEN
 Write-Host "Hole neueste Änderungen aus dem Git-Repo..." -ForegroundColor Cyan
