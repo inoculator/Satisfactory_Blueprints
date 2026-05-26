@@ -19,6 +19,7 @@ function Sync-BlueprintFolders ($SourceDir, $TargetDir) {
 
     # Von Quelle nach Ziel (z.B. Spiel -> Repo)
     foreach ($SFile in $SourceFiles) {
+        write-host "Processing $($SFile.Name)" -ForegroundColor Yellow
         $TFilePath = Join-Path $TargetDir $SFile.Name
         if (Test-Path $TFilePath) {
             $TFile = Get-Item $TFilePath
