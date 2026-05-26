@@ -9,6 +9,7 @@ git pull origin main
 
 # Funktion für den bidirektionalen Sync zweier Ordner basierend auf LastWriteTime
 function Sync-BlueprintFolders ($SourceDir, $TargetDir) {
+    write-host "  -> Sync: $SourceDir <-> $TargetDir" -ForegroundColor Gray
     if (-not (Test-Path $TargetDir)) {
         New-Item -ItemType Directory -Path $TargetDir | Out-Null
     }
