@@ -20,10 +20,10 @@ foreach ($Welt in $WeltOrdner) {
 Write-Host "Suche nach neuen lokalen Blueprints zum Hochladen..." -ForegroundColor Cyan
 foreach ($Welt in $WeltOrdner) {
     # Kopiert neue/geänderte Dateien zurück ins Repo-Verzeichnis
-    Copy-Item -Path "$($Welt.FullName)\*" -Destination $RepoDir -Recurse -Force -Exclude "bp.config" # Falls Configs lokal bleiben sollen, sonst weglassen
+    Copy-Item -Path "$($Welt.FullName)\*" -Destination $RepoDir -Recurse -Force 
 }
 
-break
+
 
 # 4. GIT AUTOMATISCH HOCHLADEN
 $GitStatus = git status --porcelain
