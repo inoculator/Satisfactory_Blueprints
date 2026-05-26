@@ -18,6 +18,7 @@ function Sync-BlueprintFolders ($SourceDir, $TargetDir) {
     $SourceFiles = Get-ChildItem -Path $SourceDir -File -Exclude ".git", "*.ps1", "README.md"
     $TargetFiles = Get-ChildItem -Path $TargetDir -File -Exclude ".git", "*.ps1", "README.md"
 
+    write-host "INFO: Found $($SourceFiles.Count) files in source and $($TargetFiles.Count) files in target." -ForegroundColor Gray
     # Von Quelle nach Ziel (z.B. Spiel -> Repo)
     foreach ($SFile in $SourceFiles) {
         write-host "Processing $($SFile.Name)" -ForegroundColor Yellow
