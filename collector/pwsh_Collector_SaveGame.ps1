@@ -15,8 +15,13 @@ function Sync-BlueprintFolders ($SourceDir, $TargetDir) {
     }
 
     # Alle Dateien aus beiden Ordnern holen
-    $SourceFiles = Get-ChildItem -Path $SourceDir -File -Exclude ".git", "*.ps1", "README.md"
-    $TargetFiles = Get-ChildItem -Path $TargetDir -File -Exclude ".git", "*.ps1", "README.md"
+# Im Spiel-Ordner liegen eh nur Blueprints, hier brauchen wir kein Exclude mehr
+$SourceFiles = @(Get-ChildItem -Path $SourceDir -File)
+
+# Im Repo filtern wir sicher über die Pipeline, um den PowerShell-Bug zu umgehen
+$TargetFiles = @(Get-ChildItem -Path $TargetDir -File | Where-Object { 
+    $_.Name -notmatch "\.git|README\.md|.+\.ps1" 
+})
 
     write-host "INFO: Found $($SourceFiles.Count) files in source and $($TargetFiles.Count) files in target." -ForegroundColor Gray
     # Von Quelle nach Ziel (z.B. Spiel -> Repo)
